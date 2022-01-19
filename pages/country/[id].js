@@ -1,4 +1,7 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router'
+import CountryDetails from '../../components/CountryDetails.component';
+import Layout from '../../components/Layout.component';
 
 export const getStaticPaths = async () => {
     const res = await fetch("https://restcountries.com/v3.1/all");
@@ -24,15 +27,22 @@ export const getStaticProps = async (context) => {
     const data = await res.json();
 
     return {
-        props: { country: data }
+        props: { country: data[0] }
     }
 }
 
 
-export default function Country({country}) {
-    console.log(country)
+export default function Country({ country }) {
+
     return (
-        <h1>{country[0].name.common} </h1>
+        <Layout>
+            <div className="">
+                <Link href="/">
+                    <button>Back</button>
+                </Link>
+            </div>
+            <CountryDetails country={country} />
+        </Layout>
     )
 }
 
