@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CountryDetails({ country }) {
     console.log(country)
@@ -81,6 +82,15 @@ export default function CountryDetails({ country }) {
                         </p>
 
                     </div>
+                </div>
+                <div className="borering-countries">
+                <p>
+                            <span className="label">
+                                Bordering Countries:
+                            </span>
+                                { !country.borders ? '' : country.borders.map(bc=> <Link href={`/country/${bc}`}>{bc}</Link>)}
+
+                        </p>         
                 </div>
             </div>
 

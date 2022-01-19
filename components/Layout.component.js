@@ -13,7 +13,7 @@ export default function Layout({ children }) {
             <body>
                 <header className="navbar">
                     <div class="layout-container">
-                        <h1>Where in the World</h1>
+                        <h2>Where in the World</h2>
                         <div></div>
                     </div>
                 </header>
