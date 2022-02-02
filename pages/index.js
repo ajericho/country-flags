@@ -18,13 +18,14 @@ export default function Home({ countries }) {
   const inputVal = useRef();
   const selectVal = useRef();
 
-  const filterOptions = [
+  const regions = [
     { id: 1, label: 'All', value: '' },
     { id: 2, label: 'Americas', value: 'Americas' },
     { id: 3, label: 'Europe', value: 'Europe' },
     { id: 4, label: 'Asia', value: 'Asia' },
     { id: 5, label: 'Oceania', value: 'Oceania' },
-    { id: 5, label: 'Antarctic', value: 'Antarctic' },
+    { id: 6, label: 'Antarctic', value: 'Antarctic' },
+    { id: 7, label: 'Africa', value: 'Africa' },
   ]
 
   useEffect(() => {
@@ -34,14 +35,14 @@ export default function Home({ countries }) {
 
   function handleChange(data) {
 
-    const newList = countries.filter(country => country.region.includes(data)).map(item => (
+    const newList = 
+    countries.filter(country => country.region.includes(data)).map(item => (
       item
     ))
     setCountryList(newList)
   };
 
   function handleSearch(data) {
-
     const newList = countries.filter(country => country.name.common.toLowerCase().includes(data.toLowerCase())).map(item => (
       item
     ))
@@ -64,7 +65,7 @@ export default function Home({ countries }) {
           onChange={(e) => handleChange(e.target.value)}
 
         >
-          {filterOptions.map(option => (
+          {regions.map(option => (
             <option key={option.id} value={option.value}>{option.label}</option>
           ))}
         </select>
