@@ -35,10 +35,10 @@ export default function Home({ countries }) {
 
   function handleChange(data) {
 
-    const newList = 
-    countries.filter(country => country.region.includes(data)).map(item => (
-      item
-    ))
+    const newList =
+      countries.filter(country => country.region.includes(data)).map(item => (
+        item
+      ))
     setCountryList(newList)
   };
 
@@ -52,23 +52,26 @@ export default function Home({ countries }) {
 
   return (
     <Layout>
-      <div>
-        <input name="search" id="search" placeholder="Search Countries" onChange={(e) => handleSearch(e.target.value)} />
-
-        <label htmlFor="region" >
-          Filter By Region
-        </label>
-        <select
-          id="region"
-          name="region"
-          defaultValue="All"
-          onChange={(e) => handleChange(e.target.value)}
-
-        >
-          {regions.map(option => (
-            <option key={option.id} value={option.value}>{option.label}</option>
-          ))}
-        </select>
+      <div className="filter-bar">
+        <div >
+          
+          <input name="search" id="search" placeholder="Search Countries" onChange={(e) => handleSearch(e.target.value)} />
+        </div>
+        <div>
+          <label htmlFor="region" >
+            Filter By Region
+          </label>
+          <select
+            id="region"
+            name="region"
+            defaultValue="All"
+            onChange={(e) => handleChange(e.target.value)}
+          >
+            {regions.map(option => (
+              <option key={option.id} value={option.value}>{option.label}</option>
+            ))}
+          </select>
+        </div>
       </div>
       <ul className="country-results-container">
         {countryList.map(country => (
